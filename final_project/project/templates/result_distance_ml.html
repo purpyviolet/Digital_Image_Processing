@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distance Calculation Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .output-container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .output {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Distance Calculation Result</h1>
+    <div class="output-container">
+        <div class="output">
+            <p>{{ output }}</p>
+        </div>
+        <div class="image-container">
+            <img src="{{ distance_path }}" alt="Distance Image">
+        </div>
+    </div>
+</body>
+</html>

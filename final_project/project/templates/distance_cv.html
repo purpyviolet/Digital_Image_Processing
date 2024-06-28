@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distance Calculation Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px 10px; /* Provide padding around the page */
+        }
+        .container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            flex-wrap: wrap; /* Allow items to wrap if not enough space */
+            gap: 20px; /* Space between items */
+        }
+        .image-box {
+            flex: 1 1 45%; /* Flex-grow, flex-shrink, flex-basis */
+            text-align: center; /* Center the text inside the box */
+        }
+        img {
+            max-width: 100%; /* Make image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border: 1px solid #ccc; /* Border around the image */
+            padding: 10px; /* Padding around the image */
+        }
+        .description {
+            font-size: 18px; /* Larger text for visibility */
+            color: #333; /* Dark grey text for better readability */
+        }
+    </style>
+</head>
+<body>
+    <h1>Distance Calculation Result</h1>
+    <div class="container">
+        <div class="image-box">
+            <div class="description">Processed Distance Image</div>
+            <img src="{{ distance_path }}" alt="Distance Image">
+        </div>
+        <div class="image-box">
+            <div class="description">Edge Detection Image</div>
+            <img src="{{ edged_path }}" alt="Edged Image">
+        </div>
+    </div>
+</body>
+</html>

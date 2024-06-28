@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #343a40;
+            display: inline; /* Align elements inline */
+        }
+        .upload-form {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input[type="file"], input[type="submit"] {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .progress-circle {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 20px;
+        }
+        .circle-bg {
+            fill: none;
+            stroke: #ddd;
+            stroke-width: 4;
+        }
+        .circle {
+            fill: none;
+            stroke: #007bff;
+            stroke-width: 4;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .progress-percentage {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            font-size: 16px; /* Smaller font size */
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Image for Processing</h1>
+    <div class="upload-form">
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*">
+            <input type="submit" value="Upload Image">
+        </form>
+    </div>
+    
+    <div style="display: inline-block;">
+        <h1>Upload Video for Processing</h1>
+        <svg class="progress-circle" width="50" height="50">
+            <circle class="circle-bg" cx="25" cy="25" r="20"/>
+            <circle class="circle" cx="25" cy="25" r="20" transform="rotate(-90 25 25)" stroke-dasharray="125.6" stroke-dashoffset="125.6"/>
+        </svg>
+        <span class="progress-percentage">0%</span>
+    </div>
+    <div class="upload-form">
+        <form method="post" action="/upload_video" enctype="multipart/form-data">
+            <input type="file" name="video" accept="video/*">
+            <input type="submit" value="Upload Video">
+        </form>
+    </div>
+    <h1>Upload Image for Distance Calculation(CV method)</h1>
+    <div class="upload-form">
+        <form method="post" action="/upload_distance" enctype="multipart/form-data">
+            <input type="file" name="distance_file" accept="image/*">
+            <input type="submit" value="Calculate Distance with pure CV method">
+        </form>
+    </div>
+    <h1>Upload Image for Distance Calculation(ML method)</h1>
+    <div class="upload-form">
+        <form method="post" action="/upload_distance_ml" enctype="multipart/form-data">
+            <input type="file" name="distance_file_ml" accept="image/*">
+            <input type="submit" value="Calculate Distance with ML Method">
+        </form>
+    </div>
+    
+    
+    <script>
+        function updateProgress() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/progress', true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var progress = parseFloat(response.progress);
+                    var progressBar = document.querySelector('.circle');
+                    var progressPercentage = document.querySelector('.progress-percentage');
+                    var radius = progressBar.r.baseVal.value;
+                    var circumference = 2 * Math.PI * radius;
+                    progressBar.style.strokeDashoffset = circumference - (progress / 100) * circumference;
+                    progressPercentage.textContent = progress.toFixed(0) + '%'; // Update text content
+                }
+            };
+            xhr.send();
+        }
+        setInterval(updateProgress, 1000); // Update every second
+    </script>
+</body>
+</html>

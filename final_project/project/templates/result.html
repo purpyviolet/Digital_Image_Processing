@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Processing Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .image-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            margin: 0 20px;
+            text-align: center;
+        }
+        .image-container img {
+            width: 400px;
+            margin: 10px 0;
+        }
+        .arrow {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Processing Result</h1>
+    
+    <div class="image-row">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='original_image.jpg') }}" alt="Original Image">
+            <p>Original Image</p>
+        </div>
+        <span class="arrow">&#8594;</span>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='hsv_image.jpg') }}" alt="HSV Image">
+            <p>HSV Image</p>
+        </div>
+    </div>
+    
+    <div class="image-row">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='h_image.jpg') }}" alt="H Channel">
+            <p>H Channel</p>
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='s_image.jpg') }}" alt="S Channel">
+            <p>S Channel</p>
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='v_image.jpg') }}" alt="V Channel">
+            <p>V Channel</p>
+        </div>
+    </div>
+
+    <div class="image-row">
+        <span class="arrow">&#8594;</span>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='equalized_v_image.jpg') }}" alt="Equalized V Channel">
+            <p>Equalized V Channel</p>
+        </div>
+        <span class="arrow">&#8594;</span>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='equalized_rgb_image.jpg') }}" alt="Equalized RGB Image">
+            <p>Equalized RGB Image</p>
+        </div>
+    </div>
+    
+</body>
+</html>

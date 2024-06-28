@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Processing Result</title>
+    <style>
+        body {
+            display: flex; /* Use flexbox to align children */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            background-color: #f8f9fa; /* Optional: background color */
+            font-family: Arial, sans-serif; /* Optional: font style */
+            flex-direction: column; /* Align content in a column */
+        }
+        h1 {
+            text-align: center; /* Ensure the title is centered */
+            width: 100%; /* Full width to center properly */
+        }
+        video {
+            display: block; /* Block display to manage easier */
+            max-width: 100%; /* Maximum width of 100% */
+            height: auto; /* Maintain aspect ratio */
+            border: none; /* Optional: No border */
+        }
+        .download-link {
+            text-align: center; /* Center the download link */
+            margin-top: 10px; /* Optional: Add some space between video and link */
+        }
+    </style>
+</head>
+<body>
+    <h1>Processed Video Result</h1>
+    <video width="640" height="480" controls>
+        <source src="/static/output_video.mp4" type="video/mp4">
+        Sorry, your browser does not support embedded videos.
+    </video>
+    <div class="download-link"> <!-- Container for the download link -->
+        <a href="/static/output_video.mp4" download>Download Video</a>
+    </div>
+</body>
+</html>
